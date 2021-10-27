@@ -9,7 +9,7 @@
 
             <div class="modal-body">
 
-                <form method="POST" action="agregar.php">
+                <form method="POST" action="agregar.php" id="MyFormAdd">
                     <div class="mb-3">
                         <label for="nombre" class="col-form-label">Nombre:</label>
                         <input type="text" class="form-control" name="nombre" id="nombre">
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                         <button type="submit" name="add" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -37,3 +37,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    function limpiarForm(){
+        document.getElementById('MyFormAdd').reset();
+    }
+</script>

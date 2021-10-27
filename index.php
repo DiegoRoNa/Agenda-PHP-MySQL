@@ -11,7 +11,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="bootstrap/css/custom.css" rel="stylesheet"> -->
+    <!-- 
+        <link href="bootstrap/css/custom.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    -->
+    
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     
 
     <!-- Custom styles for this template -->
@@ -41,20 +46,17 @@
                         </ul>
                     </li>
                 </ul>
-                <form>
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                </form>
             </div>
         </div>
     </nav>
 
     <div  class="container">
-        <h1 class="page-header text-center">Agenda de contactos</h1>
+        <h1 class="page-header text-center mt-3">Agenda de contactos</h1>
 
         <div class="row">
 
             <div class="col-12">
-                <a href="#addNew" class="col-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNew">Nuevo</a>
+                <a href="#addNew" class="col-2 btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#addNew">Nuevo</a>
 
                 <?php session_start(); ?>
                 
@@ -76,7 +78,7 @@
                 ?>
                 
 
-                <table class="col-12 table table-bordered table-striped mt-4 text-center">
+                <table class="col-12 table table-bordered table-striped mt-4 text-center" id="MiAgenda">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -144,5 +146,40 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#MiAgenda').DataTable();
+        } );
+    </script>
+
+    <script>
+        var table = $('#MiAgenda').DataTable({
+        language:{
+          "decimal": "",
+          "emptyTable": "No hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+          "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
+          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+          "infoPostFix": "",
+          "thousands": ",",
+          "lengthMenu": "Mostrar _MENU_ Entradas",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search": "Buscar:",
+          "zeroRecords": "Sin resultados encontrados",
+          "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+          }
+        },
+
+
+      });
+    </script>
   </body>
 </html>
